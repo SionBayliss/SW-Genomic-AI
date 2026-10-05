@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<article class="post wrap">
+  <a class="back" href="{{ '/' | relative_url }}#news">Back to news</a>
+  <p class="post-meta">
+    <span class="tag tag-{{ page.category | default: 'update' | slugify }}">{{ page.category | default: "Update" }}</span>
+    Posted {{ page.date | date: "%-d %B %Y" }}
+  </p>
+  <h1>{{ page.title }}</h1>
+  {% if page.event_date %}
+  <dl class="event-box">
+    <div><dt>When</dt><dd>{{ page.event_date }}</dd></div>
+    {% if page.location %}<div><dt>Where</dt><dd>{{ page.location }}</dd></div>{% endif %}
+  </dl>
+  {% endif %}
+  <div class="post-body">{{ content }}</div>
+</article>

@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<section class="hero wrap">
+  <h1>{{ site.title }}</h1>
+  <p class="lede">{{ site.tagline }}.</p>
+
+  <!-- Chromosome ideogram: each band is one partner city -->
+  <svg class="chromo" viewBox="0 0 800 120" role="img" aria-label="Four partner cities shown as bands on a chromosome: Bath, Bristol, Cardiff and Exeter">
+    <rect x="10" y="40" width="780" height="40" rx="20" class="arm"/>
+    <circle cx="400" cy="60" r="0"/>
+    <path d="M388 40 Q400 60 388 80 L412 80 Q400 60 412 40 Z" class="centromere"/>
+    <rect x="80"  y="40" width="90" height="40" class="band b1"/>
+    <rect x="230" y="40" width="90" height="40" class="band b2"/>
+    <rect x="480" y="40" width="90" height="40" class="band b3"/>
+    <rect x="630" y="40" width="90" height="40" class="band b4"/>
+    <text x="125" y="108">Bath</text>
+    <text x="275" y="108">Bristol</text>
+    <text x="525" y="108">Cardiff</text>
+    <text x="675" y="108">Exeter</text>
+  </svg>
+
+  <a class="btn" href="{{ site.signup_url }}">Sign up to the group</a>
+</section>
+
+<section id="about" class="about wrap">
+  <h2>Who we are</h2>
+  <!-- EDIT: group description -->
+  <p>We are a network of researchers, clinicians and data scientists working where genomics meets artificial intelligence. Members are based at the universities of Bath, Bristol, Cardiff and Exeter and partner NHS trusts, and we meet regularly to share methods, data and ideas.</p>
+
+  <h2>What we aim to do</h2>
+  <!-- EDIT: objectives -->
+  <ul class="aims">
+    <li><strong>Connect people.</strong> Bring together genomics and machine learning researchers across the four institutions.</li>
+    <li><strong>Share tools and data.</strong> Pool pipelines, models and good practice so groups don’t solve the same problem twice.</li>
+    <li><strong>Train the next generation.</strong> Run workshops and seminars for PhD students and early-career researchers.</li>
+    <li><strong>Win joint funding.</strong> Build collaborative bids with regional strength in genomic AI.</li>
+  </ul>
+</section>
+
+<section id="news" class="news wrap">
+  <h2>News &amp; events</h2>
+  {% assign posts = site.posts %}
+  {% if posts.size == 0 %}
+    <p>No posts yet. Add a file to the <code>_posts</code> folder to publish one.</p>
+  {% else %}
+  <ol class="post-list">
+    {% for post in posts %}
+    <li>
+      <span class="tag tag-{{ post.category | default: 'update' | slugify }}">{{ post.category | default: "Update" }}</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p class="post-meta">
+        {% if post.event_date %}{{ post.event_date }}{% if post.location %}, {{ post.location }}{% endif %}{% else %}Posted {{ post.date | date: "%-d %B %Y" }}{% endif %}
+      </p>
+      <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+</section>
+
+<section class="join wrap">
+  <h2>Want to get involved?</h2>
+  <p>Anyone working on genomics, AI or both in the South West and Wales is welcome. Sign up to receive event invitations and the group newsletter.</p>
+  <a class="btn" href="{{ site.signup_url }}">Sign up to the group</a>
+</section>
