@@ -13,8 +13,10 @@
 <header class="site-head">
   <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
   <nav>
-    <a href="{{ '/' | relative_url }}#about">About</a>
-    <a href="{{ '/' | relative_url }}#news">News &amp; events</a>
+    {% assign nav_pages = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" %}
+    {% for p in nav_pages %}
+    <a href="{{ p.url | relative_url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.nav_title | default: p.title }}</a>
+    {% endfor %}
     <a class="btn small" href="{{ site.signup_url }}">Join the group</a>
   </nav>
 </header>

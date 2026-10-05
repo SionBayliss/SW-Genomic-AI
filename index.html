@@ -1,5 +1,7 @@
 ---
 layout: default
+title: About
+nav_order: 1
 ---
 <section class="hero wrap">
   <h1>{{ site.title }}</h1>
@@ -24,7 +26,7 @@ layout: default
 </section>
 
 <section id="about" class="about wrap">
-  <h2>Who we are</h2>
+  <h2>About the group</h2>
   <!-- EDIT: group description -->
   <p>We are a network of researchers, clinicians and data scientists working where genomics meets artificial intelligence. Members are based at the universities of Bath, Bristol, Cardiff and Exeter and partner NHS trusts, and we meet regularly to share methods, data and ideas.</p>
 
@@ -38,24 +40,11 @@ layout: default
   </ul>
 </section>
 
-<section id="news" class="news wrap">
-  <h2>News &amp; events</h2>
-  {% assign posts = site.posts %}
-  {% if posts.size == 0 %}
-    <p>No posts yet. Add a file to the <code>_posts</code> folder to publish one.</p>
-  {% else %}
-  <ol class="post-list">
-    {% for post in posts %}
-    <li>
-      <span class="tag tag-{{ post.category | default: 'update' | slugify }}">{{ post.category | default: "Update" }}</span>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p class="post-meta">
-        {% if post.event_date %}{{ post.event_date }}{% if post.location %}, {{ post.location }}{% endif %}{% else %}Posted {{ post.date | date: "%-d %B %Y" }}{% endif %}
-      </p>
-      <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
-    </li>
-    {% endfor %}
-  </ol>
+<section class="news wrap">
+  {% if site.posts.size > 0 %}
+  <h2>Latest news</h2>
+  {% include post-list.html posts=site.posts limit=3 %}
+  <p class="more"><a href="{{ '/news/' | relative_url }}">See all news and events</a></p>
   {% endif %}
 </section>
 

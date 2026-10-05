@@ -1,0 +1,13 @@
+---
+layout: default
+title: News & events
+nav_order: 2
+---
+<section class="news wrap page-top">
+  <h1>News &amp; events</h1>
+  {% if site.posts.size > 0 %}
+    {% include post-list.html posts=site.posts %}
+  {% else %}
+    <p>Nothing posted yet. Check back soon, or <a href="{{ site.signup_url }}">sign up</a> to hear about events first.</p>
+  {% endif %}
+</section>

@@ -1,0 +1,13 @@
+<!-- Post list. Usage: include post-list.html posts=site.posts limit=3  (omit limit to show all) -->
+<ol class="post-list">
+  {% for post in include.posts limit: include.limit %}
+  <li>
+    <span class="tag tag-{{ post.category | default: 'update' | slugify }}">{{ post.category | default: "Update" }}</span>
+    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <p class="post-meta">
+      {% if post.event_date %}{{ post.event_date }}{% if post.location %}, {{ post.location }}{% endif %}{% else %}Posted {{ post.date | date: "%-d %B %Y" }}{% endif %}
+    </p>
+    <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+  </li>
+  {% endfor %}
+</ol>
