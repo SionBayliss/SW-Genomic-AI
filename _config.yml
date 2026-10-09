@@ -8,7 +8,7 @@ description: A research network linking Bath, Bristol, Cardiff and Exeter.
 # Paste your sign-up form link here (Google Forms, Microsoft Forms, etc.)
 signup_url: "https://forms.gle/REPLACE-WITH-YOUR-FORM"
 
-contact_email: "swgenomicai@example.ac.uk"
+contact_email: "grp-sw-genomic-ai@groups.bristol.ac.uk"
 
 # Leave blank ("") if you host at username.github.io.
 # If the repo is called e.g. "sw-genomic-ai", set baseurl: "/sw-genomic-ai"
